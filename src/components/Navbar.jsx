@@ -1,12 +1,13 @@
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
             <div className="container">
                 {/* Brand Logo */}
-                <a className="navbar-brand fw-bold fs-4" href="#">
+                <Link className="navbar-brand fw-bold fs-4" to="/">
                     skill<span className="text-primary">Bridge</span>
-                </a>
+                </Link>
 
                 {/* Mobile Toggler */}
                 <button
@@ -25,24 +26,24 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium">
                         <li className="nav-item">
-                            <a className="nav-link active text-primary" aria-current="page" href="#">
+                            <Link className="nav-link active text-primary" aria-current="page" to="/">
                                 Home
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#jobs">
+                            <Link className="nav-link" to="/all-jobs">
                                 Browse Jobs
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#about">
+                            <Link className="nav-link" to="/about-us">
                                 About Us
-                            </a>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#contact">
+                            <Link className="nav-link" to="/contact-us">
                                 Contact Us
-                            </a>
+                            </Link>
                         </li>
                     </ul>
 
