@@ -1,33 +1,10 @@
-import { useEffect, useState } from "react";
+
 import JobCards from "../../components/JobCards";
+import useFetch from "../../hook/useFetch.js";
 
 const JobSection = () => {
 
-    const [jobs, setJobs] = useState([]);
-    const [ loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        setTimeout(()=>{
-            fetch("http://localhost:3000/jobs")
-            .then((response) => {
-                if(!response.ok)
-                {
-                    throw Error("Cannot fetch the requested data");
-                }
-                return response.json(); //parsing
-            })
-            .then((data) => {
-                setJobs(data);
-                setLoading(false);
-            })
-            .catch((err)=>{
-                setError(err.message);
-                setLoading(false);
-            })
-        }, 3000);
-    }, []);
-
+   const {allData: jobs, error, loading } = useFetch("http://localhost:3000/jobs");
 
     return (
         <div>

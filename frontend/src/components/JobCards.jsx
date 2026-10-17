@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const JobCards = ({ allJobs }) => {
-    
+
     return (
         <div>
             <div className="row">
@@ -22,7 +24,12 @@ const JobCards = ({ allJobs }) => {
                                     <span className="border-bottom my-2" />
                                     <div className="d-flex justify-content-between">
                                         <p>View Opporunity</p>
-                                        <button className="btn btn-primary btn-sm rounded-pill p-2">More Details</button>
+                                        <Link
+                                            className="btn btn-primary btn-sm rounded-pill"
+                                            to={`/jobs/${job.id}`}
+                                        >
+                                            More Details
+                                        </Link>
                                     </div>
 
                                 </div>
