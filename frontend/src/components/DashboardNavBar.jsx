@@ -1,23 +1,32 @@
-const DashBoardNav = () => {
+import { FaArrowRightToBracket } from "react-icons/fa6";
+
+
+
+const DashboardNavBar = () => {
     return ( 
         <div>
-            <div className="d-flex justify-content-between">
-                <div>
-                    <h5 className="text-light">
-                        Welcome Admin
+            <nav className="d-flex justify-content-between">
+                <div className="text-light">
+                    <h5>
+                       Welcome Admin  {/* we will replace this with username */}
                     </h5>
-                    <p className="text-light">
-                        Manage everything from one place.
+                    <p>
+                        One central place to manage all your data.
                     </p>
                 </div>
                 <div>
-                    <button className="btn btn-dark">
-                        Logout
+                    <button 
+                    className="btn"
+                    style={{
+                        backgroundColor: "#E8E085"
+                    }}
+                    >
+                        Logout <span className="ms-3"> <FaArrowRightToBracket /> </span>
                     </button>
                 </div>
-            </div>
+            </nav>
         </div>
      );
 }
  
-export default DashBoardNav;
+export default DashboardNavBar;

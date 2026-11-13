@@ -2,16 +2,17 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary py-3">
             <div className="container">
-                {/* Brand Logo */}
+
+                {/* Logo */}
                 <Link className="navbar-brand fw-bold fs-4" to="/">
                     skill<span className="text-primary">Bridge</span>
                 </Link>
 
-                {/* Mobile Toggler */}
+                {/* Mobile Toggle */}
                 <button
-                    className="navbar-toggler border-0 shadow-none"
+                    className="navbar-toggler"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#navbarNav"
@@ -22,37 +23,63 @@ const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-                {/* Navigation Links & Action Buttons */}
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav mx-auto mb-2 mb-lg-0 fw-medium">
+                {/* Navigation */}
+                <div
+                    className="collapse navbar-collapse"
+                    id="navbarNav"
+                >
+                    <ul className="navbar-nav mx-auto gap-lg-2">
+
                         <li className="nav-item">
-                            <Link className="nav-link active text-primary" aria-current="page" to="/">
+                            <Link
+                                className="nav-link active fw-medium"
+                                aria-current="page"
+                                to="/"
+                            >
                                 Home
                             </Link>
                         </li>
+
                         <li className="nav-item">
-                            <Link className="nav-link" to="/all-jobs">
-                                Browse Jobs
+                            <Link
+                                className="nav-link"
+                                to="all-jobs"
+                            >
+                                Find Jobs
                             </Link>
                         </li>
+
                         <li className="nav-item">
-                            <Link className="nav-link" to="/about-us">
+                            <Link
+                                className="nav-link"
+                                to="about-us"
+                            >
                                 About Us
                             </Link>
                         </li>
+
                         <li className="nav-item">
-                            <Link className="nav-link" to="/contact-us">
-                                Contact Us
+                            <Link
+                                className="nav-link"
+                                to="contact-us"
+                            >
+                                Contact
                             </Link>
                         </li>
+
                     </ul>
 
-                    {/* Action CTAs */}
-                    <div className="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-                        <a href="#post-job" className="btn btn-outline-primary px-3">
+                    {/* Get Started */}
+                    <div className="d-flex mt-3 mt-lg-0">
+                        <Link
+                            to="/signup"
+                            className="btn btn-primary px-4 py-2 fw-semibold"
+                        >
                             Get Started
-                        </a>
+                            <i className="bi bi-arrow-right ms-2"></i>
+                        </Link>
                     </div>
+
                 </div>
             </div>
         </nav>
