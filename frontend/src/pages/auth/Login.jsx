@@ -3,21 +3,26 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "../../store/auth";
 
 const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState();
     const redirect = useNavigate();
+    const backendLink = useSelector((state)=>state.prod.link);
+    const dispatch = useDispatch();
 
     const loginUser = async(e)=>{
         e.preventDefault();
         try{
             const userDetails = { email, password };
-            const response = await axios.post("http://localhost:9000/api/v1/auth/login", userDetails, {
+            const response = await axios.post(`${backendLink}/api/v1/auth/login`, userDetails, {
                 withCredentials: true
             });
 
+            dispatch(authActions.login());
             toast.success(response.data.message)
 
             //redirect to respective dashbaord

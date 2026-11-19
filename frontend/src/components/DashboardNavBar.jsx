@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 
 
-
 const DashboardNavBar = () => {
+
+    useEffect(()=>{
+        // pick from here
+    }, []);
+
     return ( 
         <div>
             <nav className="d-flex justify-content-between">

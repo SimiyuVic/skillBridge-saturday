@@ -5,11 +5,13 @@ import employerRoutes from "./routes/employer.routes.js";
 import jobSeekerRoutes from "./routes/jobseeker.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 //create an instance of express
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(cors({
   origin: [
@@ -24,10 +26,10 @@ const MYPORT = process.env.PORT;
 app.use("/api/v1/health", (req, res)=>{
     res.status(200).json({
         success: true,
-        message: "Backend running fine"
+        message: "Backend running fine" 
     });
 });
-
+ 
 //api routes
 app.use("/api/v1/employer", employerRoutes);
 app.use("/api/v1/jobseeker", jobSeekerRoutes);

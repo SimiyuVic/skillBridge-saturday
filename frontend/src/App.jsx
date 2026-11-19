@@ -30,8 +30,40 @@ import JobSeekerApplication from "./pages/jobseeker/Applications.jsx"
 import SeekerHelp from "./pages/jobseeker/Help.jsx"
 import SeekerSettings from "./pages/jobseeker/Settings.jsx"
 import Skills from "./pages/jobseeker/Skills.jsx"
+import { useEffect } from "react"
+import axios from "axios";
+import toast  from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "./store/auth.js"
 
 function App() {
+
+  const backendLink = useSelector((state)=>state.prod.link);
+  const dispatch = useDispatch();
+
+  //cehck cookie
+  useEffect(()=>{
+    
+    const checkCookie = async()=>{
+      try{
+        const response = await axios.get(`${backendLink}/api/v1/auth/check-cookie`, {
+          withCredentials: true
+        });
+
+        if(response.data.message === true){
+          dispatch(authActions.login());
+        }
+        else{
+          dispatch(authActions.logout());
+        }
+      }
+      catch(error){
+        toast.error(error.response.data.message);
+      }
+    }
+    checkCookie();
+
+  }, []);
 
   return (
     <div>
