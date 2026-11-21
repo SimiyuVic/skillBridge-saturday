@@ -2,6 +2,7 @@ import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+//loging in all users
 export const loginUsers = async (req, res) => {
     try {
 
@@ -90,13 +91,39 @@ export const checkCookie = async (req, res) => {
 };
 
 //fetch user details
-export const fetchUserDetails = async(req, res)=>{
-    try{
-        const user = req;
-        console.log(user);
+export const fetchUserDetails = async (req, res) => {
+    try {
+        const { user } = req;
+        return res.status(200).json({
+            success: true,
+            user
+        });
     }
-    catch(error){
-         return res.status(500).json({
+    catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "Something went wrong"
+        });
+    }
+};
+
+//logout user
+export const logoutUser = async (req, res) => {
+    try {
+        res.clearCookie("sBridgeSaturday", {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            path: "/",
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "You have been Logged out"
+        });
+    }
+    catch (error) {
+        return res.status(500).json({
             success: false,
             message: "Something went wrong"
         });

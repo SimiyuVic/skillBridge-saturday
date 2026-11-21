@@ -13,7 +13,7 @@ export const authMiddleware = {
         }
 
         //decode information from the cookie
-        const decoded = jwt.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         //fetch user details from id decoded from token
         const user = await User.findById(decoded.id);
@@ -28,7 +28,7 @@ export const authMiddleware = {
         req.user = user;
         next();
     },
-    authorizeRole: async (role) => {
+    authorizeRole: (role) => {
         return (req, res, next) => {
             if (req.user.role !== role) {
                 return res.status(403).json({

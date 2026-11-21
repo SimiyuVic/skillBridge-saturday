@@ -1,5 +1,10 @@
 import express from "express";
-import { checkCookie, fetchUserDetails, loginUsers } from "../controller/auth.controller.js";
+import { 
+    checkCookie, 
+    fetchUserDetails, 
+    loginUsers, 
+    logoutUser} from "../controller/auth.controller.js";
+import { authMiddleware } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
@@ -10,6 +15,11 @@ router.post("/login", loginUsers);
 router.get("/check-cookie", checkCookie);
 
 //fetch user details
-router.get("/user-details", fetchUserDetails);
+router.get("/user-details", 
+    authMiddleware.verifyToken,
+    fetchUserDetails);
+
+//log out
+router.post("/logout", logoutUser);
 
 export default router;
